@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paige's Pantry — Homemade Gourmet Treats, Baked Fresh to Order</title>
+  <meta name="description"
+    content="Small-batch muffins, slices and cakesicles, baked fresh to order. Browse the menu, build your order, and Paige will be in touch to confirm.">
+
+  <!-- Google Fonts: Fraunces for warm, soft-serif headlines · Karla for clean body text · Caveat for handwritten bakery-card accents -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Karla:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="icon" href="favicon1.png" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ============ SKIP LINK (ACCESSIBILITY) ============ -->
+  <a class="skip-link" href="#menu">Skip to menu</a>
+
+  <!-- ============ STICKY NAV ============ -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+
+      <a href="#home" class="logo-slot" aria-label="Paige's Pantry — home">
+        <img src="logo.png" alt="Paige's Pantry">
+      </a>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#menu" class="nav-link">Menu</a>
+        <a href="#order-builder" class="nav-link">Your Order</a>
+        <a href="#about" class="nav-link">Our Story</a>
+      </nav>
+
+      <button class="order-pill" id="navOrderPill" aria-label="View your order ticket">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <path d="M16 10a4 4 0 01-8 0" />
+        </svg>
+        <span class="order-pill-count" id="navOrderCount">0</span>
+      </button>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="home">
+
+      <div class="hero-content-col">
+        <div class="hero-content">
+          <p class="hero-eyebrow">from Paige's kitchen</p>
+          <h1 class="hero-title">Gourmet treats,<br>baked to order</h1>
+          <p class="hero-sub">Handmade muffins, slices & cakesicles, baked fresh for every order.</p>
+          <div class="hero-actions">
+            <button class="btn btn--primary" id="heroCta">Build Your Order</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual-col" aria-hidden="true">
+        <img src="muffin-variety3.jpeg" alt="">
+      </div>
+
+      <div class="hero-stamp" aria-hidden="true">
+        <span>baked</span>
+        <span class="hero-stamp-rule"></span>
+        <span>fresh</span>
+      </div>
+
+    </section>
+
+    <!-- ============ MENU ============ -->
+    <section class="menu" id="menu">
+      <div class="menu-inner">
+        <p class="eyebrow">the menu</p>
+        <h2 class="section-title">Pick what you fancy, build your order below</h2>
+        <p class="menu-intro">Every treat is made fresh to order with your chosen pack size in mind. Simply select your
+          favourite options and let us know about any allergies or special requests when you enquire.</p>
+
+        <!-- ---- Category Tabs ---- -->
+        <div class="menu-tabs" id="menuTabs" role="tablist" aria-label="Menu categories">
+          <button class="menu-tab is-active" data-category="standard-muffins" role="tab" aria-selected="true">Standard
+            Muffins</button>
+          <button class="menu-tab" data-category="gourmet-muffins" role="tab" aria-selected="false">Gourmet
+            Muffins</button>
+          <button class="menu-tab" data-category="slices" role="tab" aria-selected="false">Slices</button>
+          <button class="menu-tab" data-category="cakesicles" role="tab" aria-selected="false">Cakesicles</button>
+          <button class="menu-tab" data-category="seasonal" role="tab" aria-selected="false">Seasonal</button>
+        </div>
+
+        <!-- ---- Standard Muffins ---- -->
+        <div class="menu-group" data-group="standard-muffins">
+          <h3 class="menu-group-title">Standard Muffins</h3>
+          <p class="menu-group-sub">The classics, done properly. Half dozen or dozen.</p>
+          <div class="card-grid" id="grid-standard-muffins"></div>
+        </div>
+
+        <!-- ---- Gourmet Muffins ---- -->
+        <div class="menu-group" data-group="gourmet-muffins">
+          <h3 class="menu-group-title">Gourmet Muffins</h3>
+          <p class="menu-group-sub">These aren't just muffins. They're Paige's favourite creations, made from recipes
+            she's refined over time until they were just right. Every batch is baked with care, using quality
+            ingredients and flavours worth coming back for. Available in half dozen or dozen packs.</p>
+          <div class="card-grid" id="grid-gourmet-muffins"></div>
+        </div>
+
+        <!-- ---- Slices ---- -->
+        <div class="menu-group" data-group="slices">
+          <h3 class="menu-group-title">Slices</h3>
+          <p class="menu-group-sub">Thick, rich, and packed with flavour. Paige's slices are made to share, but don't be
+            surprised if they disappear before everyone gets one. Available in a small box (8 pieces) or full box (16
+            pieces).</p>
+          <div class="card-grid" id="grid-slices"></div>
+        </div>
+
+        <!-- ---- Cakesicles ---- -->
+        <div class="menu-group" data-group="cakesicles">
+          <h3 class="menu-group-title">Cakesicles</h3>
+          <p class="menu-group-sub">Soft cake inside, smooth chocolate outside. Every cakesicle is handmade, finished by
+            hand, and made fresh to order. Available in half dozen or dozen packs.</p>
+          <div class="card-grid" id="grid-cakesicles"></div>
+        </div>
+
+        <!-- ---- Seasonal Specials ---- -->
+        <div class="menu-group" data-group="seasonal">
+          <h3 class="menu-group-title">Seasonal Specials</h3>
+          <div class="seasonal-holding">
+            <img src="logo.png" alt="Paige's Pantry" class="seasonal-holding-icon" aria-hidden="true">
+            <p class="seasonal-holding-title">Something special is coming…</p>
+            <p class="seasonal-holding-text">Paige creates limited seasonal treats throughout the year for occasions
+              like Christmas, Easter, Valentine's Day and more. These special releases are only around for a short time,
+              so keep an eye out for what's coming next.</p>
+            <a href="https://www.instagram.com/paiges__pantry" target="_blank" rel="noopener"
+              class="seasonal-holding-link">Follow along on Instagram</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ ORDER + DETAILS (one combined order ticket) ============ -->
+    <section class="order-builder" id="order-builder">
+      <div class="order-builder-inner">
+        <p class="eyebrow">your order</p>
+        <h2 class="section-title">Build it, then send it to Paige</h2>
+        <p class="order-builder-intro">Pick a pack size and add items from the menu above — they'll land here. Adjust
+          quantities, then add your details below and send it through. Nothing is charged online; this just becomes the
+          order Paige sees and confirms with you.</p>
+
+        <div class="order-ticket" id="orderTicket">
+          <div class="order-ticket-head">
+            <span>Item</span>
+            <span>Qty</span>
+            <span>Subtotal</span>
+            <span class="sr-only">Remove</span>
+          </div>
+
+          <ul class="order-list" id="orderList">
+            <!-- order line items injected by JS -->
+          </ul>
+
+          <p class="order-empty" id="orderEmpty">Your order's empty so far — pick a pack size and tap "Add to Order" on
+            anything in the menu above.</p>
+
+          <div class="order-ticket-foot">
+            <div class="order-total-row">
+              <span>Total packs</span>
+              <span id="orderTotalCount">0</span>
+            </div>
+            <div class="order-total-row order-total-row--price">
+              <span>Estimated total</span>
+              <span id="orderTotalPrice">$0.00</span>
+            </div>
+            <p class="order-disclaimer">Estimated total only — final price is confirmed with Paige, who may adjust for
+              custom decorating or large orders.</p>
+            <a href="#orderContactFields" class="btn btn--ghost btn--block" id="goToEnquiry">Continue to Your Details
+              ↓</a>
+          </div>
+
+          <!-- ---- Same ticket, continued: customer details ---- -->
+          <div class="order-ticket-divider" aria-hidden="true"></div>
+
+          <div class="order-contact" id="orderContactFields">
+            <p class="eyebrow">your details</p>
+            <h3 class="order-contact-title">Who's this order for?</h3>
+            <p class="order-contact-intro">This isn't a checkout, it's an enquiry sent directly to Paige. She'll review
+              your order, confirm what's available, and get back to you with the final price, pickup or delivery
+              details, and the next steps.</p>
+
+            <form class="enquiry-form" id="enquiryForm" novalidate action="https://formsubmit.co/paiges.pantry@outlook.com"
+              method="POST">
+
+              <!-- Hidden FormSubmit control fields -->
+              <input type="hidden" name="_subject" value="New order enquiry — Paige's Pantry">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="false">
+              <!-- Honeypot: invisible to people, bots tend to fill it in, so a filled value = silently dropped -->
+              <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+              <div class="form-row">
+                <label for="custName">Your name <span class="req">*</span></label>
+                <input type="text" id="custName" name="custName" autocomplete="name" placeholder="e.g. Sarah Wilson">
+                <span class="form-error" id="err-custName"></span>
+              </div>
+
+              <div class="form-row form-row--split">
+                <div class="form-field">
+                  <label for="custEmail">Email <span class="req">*</span></label>
+                  <input type="email" id="custEmail" name="custEmail" autocomplete="email"
+                    placeholder="sarah@example.com">
+                  <span class="form-error" id="err-custEmail"></span>
+                </div>
+                <div class="form-field">
+                  <label for="custPhone">Phone <span class="req">*</span></label>
+                  <input type="tel" id="custPhone" name="custPhone" autocomplete="tel" placeholder="04XX XXX XXX">
+                  <span class="form-error" id="err-custPhone"></span>
+                </div>
+              </div>
+
+              <!-- <div class="form-row">
+                <label for="pickupTime">Preferred pickup / delivery</label>
+                <select id="pickupTime" name="pickupTime">
+                  <option value="">No preference / let's discuss</option>
+                  <option value="Pickup — Today">Pickup — Today</option>
+                  <option value="Pickup — Tomorrow">Pickup — Tomorrow</option>
+                  <option value="Pickup — This Weekend">Pickup — This weekend</option>
+                  <option value="Local Delivery">Local delivery</option>
+                  <option value="Other">Other (mention it in notes)</option>
+                </select>
+              </div> -->
+
+              <div class="form-row">
+                <label for="orderNotes">Order notes <span class="optional">(optional)</span></label>
+                <textarea id="orderNotes" name="orderNotes" rows="4"
+                  placeholder="Allergies, decorating requests, special occasion, anything else Paige should know…"></textarea>
+              </div>
+
+              <div class="form-row form-row--summary">
+                <label for="orderSummaryPreview">Your order summary</label>
+                <textarea id="orderSummaryPreview" name="order_summary" readonly></textarea>
+              </div>
+
+              <button type="submit" class="btn btn--primary btn--block">Submit Order Enquiry</button>
+
+              <div class="form-confirmation" id="formConfirmation" role="status" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="about" id="about">
+      <div class="about-inner">
+        <div class="about-copy">
+          <p class="eyebrow">our story</p>
+          <h2 class="section-title">The Heart Behind Every Treat</h2>
+          <p>Every great recipe has a story, and ours starts in a family kitchen. Taught by her mum from a young age,
+            Paige spent years learning the craft of homemade baking before turning that lifelong passion into Paige's
+            Pantry.
+          </p>
+          <p>Today, every muffin, slice and sweet treat is baked fresh with quality ingredients, family
+            tradition, and plenty of love.</p>
+          <div class="about-stats">
+            <div class="about-stat">
+              <span class="about-stat-num">100%</span>
+              <span class="about-stat-label">freshly baked</span>
+            </div>
+            <div class="about-stat">
+              <span class="about-stat-num">0</span>
+              <span class="about-stat-label">preservatives</span>
+            </div>
+            <div class="about-stat">
+              <span class="about-stat-num">handcrafted</span>
+              <span class="about-stat-label">treats</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-visual">
+          <div class="about-photo-placeholder" aria-hidden="true">
+            <img src="logo.png" alt="" class="about-photo-watermark">
+            <span class="about-photo-label">Photo of Paige coming soon</span>
+          </div>
+          <div class="about-visual-card">
+            <span class="about-visual-tape"></span>
+            <p class="about-visual-quote">"My goal has always been simple: create treats that make people smile."</p>
+            <p class="about-visual-sign">— Paige</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+
+      <div class="footer-top">
+
+        <div class="footer-brand">
+          <a class="footer-logo-slot" aria-label="Paige's Pantry" href="#home">
+            <img src="logo.png" alt="Paige's Pantry">
+          </a>
+          <p class="footer-tagline">Homemade gourmet treats,<br>baked fresh to order.</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <span class="footer-section-label">Navigate</span>
+          <a href="#home" class="footer-nav-link">Home</a>
+          <a href="#menu" class="footer-nav-link">Menu</a>
+          <a href="#order-builder" class="footer-nav-link">Your Order</a>
+          <a href="#about" class="footer-nav-link">Our Story</a>
+        </nav>
+
+        <nav class="footer-nav" aria-label="Our offerings">
+          <span class="footer-section-label">Our Offerings</span>
+          <a href="#menu" class="footer-nav-link" data-menu-category="standard-muffins">Standard Muffins</a>
+          <a href="#menu" class="footer-nav-link" data-menu-category="gourmet-muffins">Gourmet Muffins</a>
+          <a href="#menu" class="footer-nav-link" data-menu-category="slices">Slices</a>
+          <a href="#menu" class="footer-nav-link" data-menu-category="cakesicles">Cakesicles</a>
+          <a href="#menu" class="footer-nav-link" data-menu-category="seasonal">Seasonal Specials</a>
+        </nav>
+
+        <div class="footer-social">
+          <span class="footer-section-label">Find us</span>
+          <div class="footer-social-icons">
+            <a href="https://www.instagram.com/paiges__pantry/" class="social-link" target="_blank"
+              rel="noopener noreferrer" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+              </svg>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61580186669080#" class="social-link" target="_blank"
+              rel="noopener noreferrer" aria-label="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">© <span id="footerYear"></span> Paige's Pantry</p>
+        <p class="footer-credit">Designed and developed by <a href="https://avwebstudio.com.au" class="av-credit"
+            target="_blank" rel="noopener noreferrer">AV Web Studio</a></p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ============ MOBILE FLOATING ORDER BUTTON ============ -->
+  <button class="floating-order-btn" id="floatingOrderBtn" aria-label="View your order ticket">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+      <line x1="3" y1="6" x2="21" y2="6" />
+      <path d="M16 10a4 4 0 01-8 0" />
+    </svg>
+    <span class="floating-order-count" id="floatingOrderCount">0</span>
+  </button>
+
+  <!-- ============ TOAST ============ -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
