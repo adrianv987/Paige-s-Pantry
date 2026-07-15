@@ -328,7 +328,21 @@
     const tabsEl = document.getElementById("menuTabs");
     const scrollWrap = tabsEl && tabsEl.parentElement;
     if (tabsEl && scrollWrap) {
-      const scrollStep = () => tabsEl.clientWidth * 0.65;
+
+      // Custom easing scroll — smoother than browser's built-in on mobile
+      function smoothScrollTo(el, target, duration) {
+        const start = el.scrollLeft;
+        const dist  = target - start;
+        if (Math.abs(dist) < 1) return;
+        const t0 = performance.now();
+        function ease(t) { return t < 0.5 ? 2*t*t : -1 + (4 - 2*t)*t; }
+        function step(now) {
+          const t = Math.min((now - t0) / duration, 1);
+          el.scrollLeft = start + dist * ease(t);
+          if (t < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
 
       function updateScrollHint() {
         const hasOverflow = tabsEl.scrollWidth > tabsEl.clientWidth + 4;
@@ -342,10 +356,19 @@
       window.addEventListener("resize",  updateScrollHint, { passive: true });
       updateScrollHint();
 
+      const step      = () => tabsEl.clientWidth * 0.65;
+      const maxScroll = () => tabsEl.scrollWidth - tabsEl.clientWidth;
+
       const arrowRight = document.getElementById("menuTabsArrow");
       const arrowLeft  = document.getElementById("menuTabsArrowLeft");
-      if (arrowRight) arrowRight.addEventListener("click", () => tabsEl.scrollBy({ left:  scrollStep(), behavior: "smooth" }));
-      if (arrowLeft)  arrowLeft.addEventListener( "click", () => tabsEl.scrollBy({ left: -scrollStep(), behavior: "smooth" }));
+
+      // Clamp to true start/end so the last tab always sits flush at the right edge
+      if (arrowRight) arrowRight.addEventListener("click", () => {
+        smoothScrollTo(tabsEl, Math.min(tabsEl.scrollLeft + step(), maxScroll()), 420);
+      });
+      if (arrowLeft) arrowLeft.addEventListener("click", () => {
+        smoothScrollTo(tabsEl, Math.max(tabsEl.scrollLeft - step(), 0), 420);
+      });
     }
   }
 
