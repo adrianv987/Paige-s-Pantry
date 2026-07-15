@@ -619,14 +619,89 @@ body {
 .menu-inner { max-width: var(--max-width); margin: 0 auto; }
 .menu-intro { color: var(--cocoa-soft); max-width: 60ch; margin-bottom: 2rem; }
 
+.menu-tabs-scroll {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+.menu-tabs-scroll::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 4rem;
+  background: linear-gradient(to right, transparent, var(--cream-deep) 85%);
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.menu-tabs-scroll.is-end::after {
+  opacity: 0;
+}
+
+.menu-tabs-arrow {
+  position: absolute;
+  top: 50%;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--cocoa);
+  color: var(--cream);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 12px rgba(59,32,48,0.35);
+  z-index: 3;
+  transition: opacity 0.22s ease;
+}
+.menu-tabs-arrow--right {
+  right: 0.4rem;
+  transform: translateY(-65%);
+  animation: arrowNudgeRight 1.6s ease-in-out infinite;
+}
+.menu-tabs-arrow--left {
+  left: 0.4rem;
+  transform: translateY(-65%);
+  animation: arrowNudgeLeft 1.6s ease-in-out infinite;
+}
+.menu-tabs-scroll.is-end .menu-tabs-arrow--right,
+.menu-tabs-scroll.is-start .menu-tabs-arrow--left {
+  opacity: 0;
+  pointer-events: none;
+}
+@keyframes arrowNudgeRight {
+  0%, 100% { transform: translateY(-65%) translateX(0); }
+  50%       { transform: translateY(-65%) translateX(4px); }
+}
+@keyframes arrowNudgeLeft {
+  0%, 100% { transform: translateY(-65%) translateX(0); }
+  50%       { transform: translateY(-65%) translateX(-4px); }
+}
+
+/* left-side fade — mirrors the right, appears once user has scrolled */
+.menu-tabs-scroll::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 4rem;
+  background: linear-gradient(to left, transparent, var(--cream-deep) 85%);
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.menu-tabs-scroll:not(.is-start)::before {
+  opacity: 1;
+}
 .menu-tabs {
   display: flex;
   gap: 0.6rem;
   overflow-x: auto;
   padding-bottom: 0.5rem;
-  margin-bottom: 2.5rem;
-  scrollbar-width: thin;
+  scrollbar-width: none;
 }
+.menu-tabs::-webkit-scrollbar { display: none; }
 .menu-tab {
   flex-shrink: 0;
   background: var(--paper);

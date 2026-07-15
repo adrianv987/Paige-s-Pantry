@@ -323,6 +323,30 @@
     tabs.forEach((tab) => {
       tab.addEventListener("click", () => applyCategory(tab.dataset.category));
     });
+
+    // Scroll hint: show/hide arrows and gradients as user scrolls
+    const tabsEl = document.getElementById("menuTabs");
+    const scrollWrap = tabsEl && tabsEl.parentElement;
+    if (tabsEl && scrollWrap) {
+      const scrollStep = () => tabsEl.clientWidth * 0.65;
+
+      function updateScrollHint() {
+        const hasOverflow = tabsEl.scrollWidth > tabsEl.clientWidth + 4;
+        const atEnd   = tabsEl.scrollLeft + tabsEl.clientWidth >= tabsEl.scrollWidth - 4;
+        const atStart = tabsEl.scrollLeft <= 4;
+        scrollWrap.classList.toggle("is-end",   !hasOverflow || atEnd);
+        scrollWrap.classList.toggle("is-start", atStart);
+      }
+
+      tabsEl.addEventListener("scroll", updateScrollHint, { passive: true });
+      window.addEventListener("resize",  updateScrollHint, { passive: true });
+      updateScrollHint();
+
+      const arrowRight = document.getElementById("menuTabsArrow");
+      const arrowLeft  = document.getElementById("menuTabsArrowLeft");
+      if (arrowRight) arrowRight.addEventListener("click", () => tabsEl.scrollBy({ left:  scrollStep(), behavior: "smooth" }));
+      if (arrowLeft)  arrowLeft.addEventListener( "click", () => tabsEl.scrollBy({ left: -scrollStep(), behavior: "smooth" }));
+    }
   }
 
   /* -----------------------------------------------------------------

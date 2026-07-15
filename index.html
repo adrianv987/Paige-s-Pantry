@@ -91,14 +91,20 @@
           favourite options and let us know about any allergies or special requests when you enquire.</p>
 
         <!-- ---- Category Tabs ---- -->
-        <div class="menu-tabs" id="menuTabs" role="tablist" aria-label="Menu categories">
-          <button class="menu-tab is-active" data-category="standard-muffins" role="tab" aria-selected="true">Standard
-            Muffins</button>
-          <button class="menu-tab" data-category="gourmet-muffins" role="tab" aria-selected="false">Gourmet
-            Muffins</button>
-          <button class="menu-tab" data-category="slices" role="tab" aria-selected="false">Slices</button>
-          <button class="menu-tab" data-category="cakesicles" role="tab" aria-selected="false">Cakesicles</button>
-          <button class="menu-tab" data-category="seasonal" role="tab" aria-selected="false">Seasonal</button>
+        <div class="menu-tabs-scroll is-start">
+          <button class="menu-tabs-arrow menu-tabs-arrow--left" id="menuTabsArrowLeft" aria-label="See previous categories">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div class="menu-tabs" id="menuTabs" role="tablist" aria-label="Menu categories">
+            <button class="menu-tab is-active" data-category="standard-muffins" role="tab" aria-selected="true">Standard Muffins</button>
+            <button class="menu-tab" data-category="gourmet-muffins" role="tab" aria-selected="false">Gourmet Muffins</button>
+            <button class="menu-tab" data-category="slices" role="tab" aria-selected="false">Slices</button>
+            <button class="menu-tab" data-category="cakesicles" role="tab" aria-selected="false">Cakesicles</button>
+            <button class="menu-tab" data-category="seasonal" role="tab" aria-selected="false">Seasonal</button>
+          </div>
+          <button class="menu-tabs-arrow menu-tabs-arrow--right" id="menuTabsArrow" aria-label="See more categories">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
         </div>
 
         <!-- ---- Standard Muffins ---- -->
